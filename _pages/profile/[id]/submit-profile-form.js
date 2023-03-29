@@ -93,10 +93,7 @@ const SubmitProfileForm = memo(
     const { web3 } = useWeb3();
 
     const { upload, uploadWithProgress } = useArchon();
-    const { send } = useContract(
-      "proofOfHumanity",
-      reapply ? "reapplySubmission" : "addSubmission"
-    );
+    const { send } = useContract("proofOfHumanityGovernorProxy", "addHumans");
 
     const metaEvidence = useEvidenceFile()(registrationMetaEvidence.URI);
 
@@ -328,9 +325,7 @@ const SubmitProfileForm = memo(
           try {
             setWaitingForTransaction(true);
             pageScroll();
-            const result = await send(evidence, name, {
-              value: String(contribution) === "" ? 0 : contribution,
-            });
+            const result = await send([account], [evidence], [name]);
 
             onSend?.();
 

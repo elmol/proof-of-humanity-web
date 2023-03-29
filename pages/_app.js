@@ -66,6 +66,37 @@ const contracts = [
     address: { [network]: address },
   },
   {
+    name: "proofOfHumanityGovernorProxy",
+    abi: [
+      {
+        constant: false,
+        inputs: [
+          {
+            internalType: "address[]",
+            name: "_submissionIDs",
+            type: "address[]",
+          },
+          {
+            internalType: "string[]",
+            name: "_evidence",
+            type: "string[]",
+          },
+          {
+            internalType: "string[]",
+            name: "_names",
+            type: "string[]",
+          },
+        ],
+        name: "addHumans",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+    ],
+    address: { goerli: "0x90AAf5a8b9961558dB76b64c1308E0517866CA93" },
+  },
+  {
     name: "klerosLiquid",
     abi: KlerosLiquid,
     address: { [network]: klerosLiquidAddress },
